@@ -160,7 +160,7 @@ assign a = 6'b101010;
 
 // in1 and in2 inputs of module 
 assign c = &a; // AND reduction result 0
-assign c = |a; // OR reduction result 1
+assign d = |a; // OR reduction result 1
 ```
 
 ### Conditional Operator
