@@ -32,6 +32,7 @@ Commonly used types in SystemVerilog include:
 
 ### Variable Types
 
+- `logic`: A 4-state data type (0, 1, X, Z) used for modeling combinational and sequential logic.
 - `byte`: An 8-bit signed integer.
 - `shortint`: A 16-bit signed integer.
 - `int`: A 32-bit signed integer.
