@@ -164,7 +164,7 @@ always_comb begin
     end
     else if (done_signal) begin
             status = 1’b1;
-            status = 1’b0;
+            result = 1’b0;
         end
         else begin
             status = 1’b0;
