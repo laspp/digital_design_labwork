@@ -262,4 +262,42 @@ Switch values denote duty cycle for each color. The duty cycle is calculated as 
 
 Duty cycle is definied as ratio of high signal to the period of the signal, e.g. 25% duty cycle means that the signal is high for 25% of the period.
 
+### PWM time diagram
+<img src="../img/Drawings-1.png" alt="PWM_timing" width="600">
 
+### Hints
+
+- You can reuse the prescaler module from lectures. Make sure to set the prescaler to output a pulse every 3125 clock cycles.
+
+- The PWM module should consists of a 4-bit counter. The counter increments with the PWM_tick signal from the prescaler. To generate the PWM signals for each color, compare the counter value with the corresponding duty cycle input. If the counter value is less than the duty cycle, set the output high; otherwise, set it low.
+
+- Employ structural modeling to connect the prescaler and PWM modules. The draft SV file is provided in the repository.
+
+- Create a testbench to verify the functionality of your PWM module. The testbench is provided in the repository.
+
+### Pin mapping 
+
+Connect the `clk` signal to the system clock (100 MHz), the `rst` signal to the middle button, the `up_down` signal to the switch, and the `gray_code` signal to the LEDs.
+
+```tcl
+## Clock signal
+set_property -dict { PACKAGE_PIN E3    IOSTANDARD LVCMOS33 } [get_ports { clock }]; #IO_L12P_T1_MRCC_35 Sch=clk100mhz
+create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports {clock}];
+
+
+##Switches
+set_property -dict { PACKAGE_PIN J15   IOSTANDARD LVCMOS33 } [get_ports { SW[0] }]; #IO_L24N_T3_RS0_15 Sch=sw[0]
+set_property -dict { PACKAGE_PIN L16   IOSTANDARD LVCMOS33 } [get_ports { SW[1] }]; #IO_L3N_T0_DQS_EMCCLK_14 Sch=sw[1]
+set_property -dict { PACKAGE_PIN M13   IOSTANDARD LVCMOS33 } [get_ports { SW[2] }]; #IO_L6N_T0_D08_VREF_14 Sch=sw[2]
+set_property -dict { PACKAGE_PIN R15   IOSTANDARD LVCMOS33 } [get_ports { SW[3] }]; #IO_L13N_T2_MRCC_14 Sch=sw[3]
+set_property -dict { PACKAGE_PIN R17   IOSTANDARD LVCMOS33 } [get_ports { SW[4] }]; #IO_L12N_T1_MRCC_14 Sch=sw[4]
+set_property -dict { PACKAGE_PIN T18   IOSTANDARD LVCMOS33 } [get_ports { SW[5] }]; #IO_L7N_T1_D10_14 Sch=sw[5]
+
+##Buttons
+set_property -dict { PACKAGE_PIN N17   IOSTANDARD LVCMOS33 } [get_ports { reset }]; #IO_L9P_T1_DQS_14 Sch=btnc
+
+## RGB LEDs
+set_property -dict { PACKAGE_PIN R12   IOSTANDARD LVCMOS33 } [get_ports { RGB[2] }]; #IO_L5P_T0_D06_14 Sch=led16_b
+set_property -dict { PACKAGE_PIN M16   IOSTANDARD LVCMOS33 } [get_ports { RGB[1] }]; #IO_L10P_T1_D14_14 Sch=led16_g
+set_property -dict { PACKAGE_PIN N15   IOSTANDARD LVCMOS33 } [get_ports { RGB[0] }]; #IO_L11P_T1_SRCC_14 Sch=led16_r
+```
