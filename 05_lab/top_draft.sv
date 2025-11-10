@@ -1,33 +1,30 @@
-// Components for stopwatch
-module timer_1s // General Purpose counter        
-    #(parameter PRESCALER_WIDTH = 14,
-      parameter LIMIT = 10000)
+// Components
+
+module counter_1s // General Purpose counter        
     (
         input logic clock,
         input logic reset,
-        output logic time_tick
+        input logic enable,
+        output logic [31:0] count
     );
 
-    // implement the counter that counts from 0 t0 LIMIT-1
-    // the counter width is PRESCALER_WIDTH
-    // when the counter reaches LIMIT, time_tick should be high for one clock cycle
+    // implement counter with frequency of 1 Hz
+    // when enable is high, the counter counts up every second, otherwise it holds the value
+    // when reset is high, the counter resets to 0
 
 endmodule
 
 
-// Components for stopwatch
 module timer_0002s // General Purpose counter        
-    #(parameter PRESCALER_WIDTH = 14,
-      parameter LIMIT = 10000)
     (
         input logic clock,
         input logic reset,
         output logic time_tick
     );
 
-    // implement the counter that counts from 0 t0 LIMIT-1
-    // the counter width is PRESCALER_WIDTH
-    // when the counter reaches LIMIT, time_tick should be high for one clock cycle
+    // implement the counter that generates a time_tick every 0.002 seconds
+    // Tip: Remember counter25Mhz module from lectures
+  
 
 endmodule
 
@@ -100,15 +97,17 @@ module SevSegDisplay (
 
     assign digit = {digit8, digit7, digit6, digit5, digit4, digit3, digit2, digit1};
 
+    // connect acording to figures 
+
 endmodule
 
 
-module counter1s (
+module top (
     input logic clock,
     input logic reset,
-    input logic start,
-    output logic[7:0] anode_assert,
-    output logic[6:0] segs
+    input logic enable,
+    output logic [7:0] anode_assert,
+    output logic [6:0] segs
 );
 
 endmodule

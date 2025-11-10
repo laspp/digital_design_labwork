@@ -3,20 +3,20 @@
 `timescale 1s / 1us
 
 
-module tb_counter1s;
+module tb_top;
 
     // Declare testbench signals
     logic clock;
     logic reset;
-    logic starts;
+    logic enable;
     logic [7:0] anode_assert;
     logic [6:0] segs;
 
     // Instantiate the stopwatch module
-    counter1s uut (
+    top uut (
         .clock(clock),
         .reset(reset),
-        .start(starts),
+        .enable(enable),
         .anode_assert(anode_assert),
         .segs(segs)
     );
@@ -34,7 +34,7 @@ module tb_counter1s;
         $dumpvars;
 
         reset = 1;
-        starts = 0;
+        enable = 0;
 
         // Apply reset
         #10;
@@ -42,7 +42,7 @@ module tb_counter1s;
 
         // Start counting
         #20;
-        starts = 1;
+        enable = 1;
 
         // Run simulation for 5 seconds
         #(50000000);

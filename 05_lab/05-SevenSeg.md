@@ -188,15 +188,15 @@ endmodule
 
 ### Top module
 
-The top module will instantiate the `timer_1s`, `anode_assert`, `value_to_digit`, and `digit_to_segments` modules, and connect them together. The top module will also contain the logic to start and stop the timer using `switch 0` and reset the timer using `button BTNC`. The top module will have the following inputs and outputs:
+The top module will instantiate the `counter_1s`, `anode_assert`, `value_to_digit`, and `digit_to_segments` modules, and connect them together. The top module will also contain the logic for enabling the counter by using enable signal connected to `SW0` and reset the counter using `button BTNC`. The top module will have the following inputs and outputs:
 
 ```verilog
-module stopwatch (
+module top (
     input logic clock,
     input logic reset,
-    input logic start,
-    output logic[7:0] anode_assert,
-    output logic[6:0] segs
+    input logic enable,
+    output logic [7:0] anode_assert,
+    output logic [6:0] segs
 );
 
 endmodule
@@ -209,7 +209,7 @@ set_property -dict { PACKAGE_PIN E3    IOSTANDARD LVCMOS33 } [get_ports { clock 
 create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports {clock}];
 
 ##Switches
-set_property -dict { PACKAGE_PIN J15   IOSTANDARD LVCMOS33 } [get_ports { start }]; #IO_L24N_T3_RS0_15 Sch=sw[0]
+set_property -dict { PACKAGE_PIN J15   IOSTANDARD LVCMOS33 } [get_ports { enable }]; #IO_L24N_T3_RS0_15 Sch=sw[0]
 
 ##7 segment display
 set_property -dict { PACKAGE_PIN T10   IOSTANDARD LVCMOS33 } [get_ports { segs[0] }]; #IO_L24N_T3_A00_D16_14 Sch=ca
