@@ -59,7 +59,7 @@ The design will consist of the following modules:
 
 ### Counter 1 s
 
-The counter module will output a pulse every 1 seconds. The module will have the following inputs and outputs:
+The counter module will output a state of count registers, which is incremented every 1 seconds. The module will have the following inputs and outputs:
 
 - **Inputs**:
     - `clock`: 100 MHz clock signal.
