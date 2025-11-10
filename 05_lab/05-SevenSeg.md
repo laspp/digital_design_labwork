@@ -202,6 +202,16 @@ module top (
 endmodule
 ```
 
+## Conceptual Schematic
+
+### 7 segment display 
+
+<img src="../img/Drawings-1 copy.png" alt="Conceptual Schematic" width="800">
+
+### Top module 
+
+<img src="../img/Drawings-2.png" alt="Top module" width="800">
+
 ### Constraints
 ```verilog
 ## Clock signal
