@@ -5,7 +5,6 @@ module timer_1s // General Purpose counter
     (
         input logic clock,
         input logic reset,
-        input start,
         output logic time_tick
     );
 
@@ -15,6 +14,22 @@ module timer_1s // General Purpose counter
 
 endmodule
 
+
+// Components for stopwatch
+module timer_0002s // General Purpose counter        
+    #(parameter PRESCALER_WIDTH = 14,
+      parameter LIMIT = 10000)
+    (
+        input logic clock,
+        input logic reset,
+        output logic time_tick
+    );
+
+    // implement the counter that counts from 0 t0 LIMIT-1
+    // the counter width is PRESCALER_WIDTH
+    // when the counter reaches LIMIT, time_tick should be high for one clock cycle
+
+endmodule
 
 
 // Components for 7-segment display
