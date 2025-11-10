@@ -45,7 +45,7 @@ In a common cathode (CC) configuration, all the cathodes (negative terminals) of
 
 > **Note:** Although the 7-segment displays are in a common anode configuration, to select the appropriate 7-segment display, we need to set ANX (X = 0,...,7) to a low level. The ANX signals do not connect directly to the common anode signal of the 7-segment display but control transistors that act as switches. When ANX is set to low, the transistor turns ON, connecting the supply to the appropriate 7-segment display. Refer to Figure 9.1 in the [reference manual](https://digilent.com/reference/programmable-logic/nexys-a7/reference-manual).
 
- <img src="./img/multiplex.png" alt="MUX4to1" width="600">
+ <img src="../img/multiplex.png" alt="MUX4to1" width="600">
 
 
 ## Assignment 
