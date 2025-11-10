@@ -64,27 +64,25 @@ The counter module will output a pulse every 1 seconds. The module will have the
 - **Inputs**:
     - `clock`: 100 MHz clock signal.
     - `reset`: Asynchronous reset signal.
-    - `start`: When active, enables counting.
+    - `enable`: When active, enables counting.
 - **Outputs**:
-    - `pulse`: A pulse signal that goes high every 1 seconds.
+    - `count`: 32-bit output representing the current count value.
 
 
 Interface of the module:
 
 ```verilog
-module timer_1s // General Purpose counter        
-    #(parameter PRESCALER_WIDTH = 32,
-      parameter LIMIT = 100000000)
+module counter_1s // General Purpose counter        
     (
         input logic clock,
         input logic reset,
-        input start,
-        output logic time_tick
+        input logic enable,
+        output logic [31:0] count
     );
 
-    // implement the counter that counts from 0 t0 LIMIT-1, when start is high
-    // the counter width is PRESCALER_WIDTH
-    // when the counter reaches LIMIT, time_tick should be high for one clock cycle
+    // implement counter with frequency of 1 Hz
+    // when enable is high, the counter counts up every second, otherwise it holds the value
+    // when reset is high, the counter resets to 0
 
 endmodule
 ```
@@ -123,6 +121,21 @@ endmodule
 #### Counter 0.002s module
 
 The counter module will output a pulse every 0.002 seconds. You can use the timer_1s module to implement this module. Just change the limit parameter accordingly.
+
+```verilog
+module timer_002s // General Purpose counter
+    (
+        input logic clock,
+        input logic reset,
+        output logic time_tick
+    );
+
+    // implement the counter that generates a time_tick every 0.002 seconds
+    // Tip: Remember counter25Mhz module from lectures
+  
+
+endmodule
+```
 
 #### Anode selector module
 

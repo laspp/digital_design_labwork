@@ -15,7 +15,7 @@ module counter_1s // General Purpose counter
 endmodule
 
 
-module timer_0002s // General Purpose counter        
+module timer_002s // General Purpose counter        
     (
         input logic clock,
         input logic reset,
