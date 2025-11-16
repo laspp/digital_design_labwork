@@ -1,4 +1,4 @@
-# Fourth exercise: Counter and seven segment display 
+# Fifth exercise: Counter and seven segment display 
 
 
 ## Seven segment display 
